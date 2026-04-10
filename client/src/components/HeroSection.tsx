@@ -19,10 +19,10 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-white/70" />
 
       <div className="relative z-10 container mx-auto px-4 py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
-          {/* Profile Image */}
-          <div className="flex justify-center md:justify-end order-2 md:order-1">
-            <div className="relative w-64 h-80 md:w-72 md:h-96 rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 max-w-6xl mx-auto">
+          {/* Profile Image - Left Side */}
+          <div className="flex-shrink-0 w-48 h-64 md:w-56 md:h-72">
+            <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow duration-300">
               <img
                 src={profileImageUrl}
                 alt="Profile"
@@ -32,40 +32,33 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Text Content */}
-          <div className="text-center md:text-left order-1 md:order-2">
-            <h1 className="text-5xl md:text-6xl font-bold text-primary mb-6">
-              Data Science Portfolio
+          {/* Text Content - Right Side */}
+          <div className="flex-1">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight">
+              I help transform ambiguous problems into clear, data-driven solutions
             </h1>
 
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 font-light">
-              Transforming data into actionable insights through machine learning
-              and advanced analytics
+            <p className="text-base md:text-lg text-gray-600 mb-8 italic font-light leading-relaxed">
+              By asking the right questions before building any model or writing any code.
             </p>
 
-            <p className="text-lg text-gray-500 mb-12">
-              Specialized in predictive modeling, NLP, time series forecasting,
-              and data visualization. Passionate about solving real-world problems
-              with data-driven solutions.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-start mb-8">
               <Button
                 size="lg"
-                className="bg-primary hover:bg-blue-800 text-white px-8 py-6 text-lg rounded-lg transition-all duration-300 hover:shadow-lg"
+                className="bg-primary hover:bg-blue-800 text-white px-8 py-3 text-base rounded-lg transition-all duration-300 hover:shadow-lg"
                 onClick={() =>
                   document
-                    .getElementById("projects")
+                    .getElementById("about")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
               >
-                View My Projects
+                Learn More
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-primary text-primary hover:bg-primary/5 px-8 py-6 text-lg rounded-lg transition-all duration-300"
+                className="border-2 border-primary text-primary hover:bg-primary/5 px-8 py-3 text-base rounded-lg transition-all duration-300"
                 onClick={() =>
                   document
                     .getElementById("contact")
@@ -76,7 +69,7 @@ export default function HeroSection() {
               </Button>
             </div>
 
-            <div className="flex justify-center md:justify-start gap-6">
+            <div className="flex justify-start gap-4">
               <a
                 href="https://github.com"
                 target="_blank"
