@@ -5,7 +5,7 @@ export default function HeroSection() {
   const heroUrl =
     "https://d2xsxph8kpxj0f.cloudfront.net/310519663363714188/c3ePDXg76ZCD8dvQW7cGJv/hero-background-Bv4do74D9ZgR9XqsVJrDJ7.webp";
   const profileImageUrl =
-    "https://d2xsxph8kpxj0f.cloudfront.net/310519663363714188/c3ePDXg76ZCD8dvQW7cGJv/Screenshot_e4424258c8b8649f6e67d283a50a2cbc_a0108d8f.jpg";
+    "https://d2xsxph8kpxj0f.cloudfront.net/310519663363714188/c3ePDXg76ZCD8dvQW7cGJv/Screenshot_٢٠٢٥-٠٩-٢٠-١٥-٣٨-٢٨-٢٩_e4424258c8b8649f6e67d283a50a2cbc_ab831343.jpg";
 
   return (
     <section
