@@ -1,28 +1,27 @@
 import { useState, useEffect } from "react";
-import { X, Upload, Download, Trash2 } from "lucide-react";
+import { X, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 export default function AdminPanel() {
   const [isOpen, setIsOpen] = useState(false);
   const [cvFile, setCvFile] = useState<File | null>(null);
-  const [cvUrl, setCvUrl] = useState<string>("");
   const [fileName, setFileName] = useState<string>("");
+  const [isUploaded, setIsUploaded] = useState(false);
 
-  // Load CV from localStorage on mount
+  // Load CV status from localStorage on mount
   useEffect(() => {
-    const savedCvUrl = localStorage.getItem("portfolio_cv_url");
     const savedFileName = localStorage.getItem("portfolio_cv_name");
-    if (savedCvUrl) {
-      setCvUrl(savedCvUrl);
-      setFileName(savedFileName || "CV.pdf");
+    if (savedFileName) {
+      setFileName(savedFileName);
+      setIsUploaded(true);
     }
   }, []);
 
   // Listen for keyboard shortcut: Ctrl + Shift + A
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.shiftKey && e.key === "Q") {
+      if (e.ctrlKey && e.shiftKey && e.key === "A") {
         e.preventDefault();
         setIsOpen(true);
       }
@@ -52,39 +51,18 @@ export default function AdminPanel() {
         const base64String = event.target?.result as string;
         localStorage.setItem("portfolio_cv_url", base64String);
         localStorage.setItem("portfolio_cv_name", cvFile.name);
-        setCvUrl(base64String);
         setFileName(cvFile.name);
+        setIsUploaded(true);
         setCvFile(null);
-        alert("CV uploaded successfully!");
+        alert("✅ CV uploaded successfully!");
+        
+        // Close panel after 1 second
+        setTimeout(() => setIsOpen(false), 1000);
       };
       reader.readAsDataURL(cvFile);
     } catch (error) {
       console.error("Error uploading CV:", error);
-      alert("Error uploading CV");
-    }
-  };
-
-  const handleDownloadCV = () => {
-    if (!cvUrl) {
-      alert("No CV uploaded yet");
-      return;
-    }
-
-    const link = document.createElement("a");
-    link.href = cvUrl;
-    link.download = fileName;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  const handleDeleteCV = () => {
-    if (confirm("Are you sure you want to delete your CV?")) {
-      localStorage.removeItem("portfolio_cv_url");
-      localStorage.removeItem("portfolio_cv_name");
-      setCvUrl("");
-      setFileName("");
-      alert("CV deleted successfully");
+      alert("❌ Error uploading CV");
     }
   };
 
@@ -93,7 +71,7 @@ export default function AdminPanel() {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
-            <span>🔐 Admin Panel - CV Manager</span>
+            <span>🔐 Admin - Upload CV</span>
             <Button
               variant="ghost"
               size="sm"
@@ -111,7 +89,7 @@ export default function AdminPanel() {
             <p className="text-sm font-semibold text-blue-900 mb-2">
               Current CV Status:
             </p>
-            {cvUrl ? (
+            {isUploaded ? (
               <p className="text-sm text-blue-700">
                 ✅ CV Uploaded: <strong>{fileName}</strong>
               </p>
@@ -123,7 +101,7 @@ export default function AdminPanel() {
           {/* Upload Section */}
           <div className="space-y-3">
             <label className="block text-sm font-semibold text-gray-700">
-              Upload New CV
+              Upload CV File
             </label>
             <input
               type="file"
@@ -151,35 +129,13 @@ export default function AdminPanel() {
             </Button>
           </div>
 
-          {/* Action Buttons */}
-          <div className="space-y-2 pt-4 border-t">
-            <Button
-              onClick={handleDownloadCV}
-              variant="outline"
-              className="w-full"
-              disabled={!cvUrl}
-            >
-              <Download className="w-4 h-4 mr-2" />
-              Download CV
-            </Button>
-            <Button
-              onClick={handleDeleteCV}
-              variant="destructive"
-              className="w-full"
-              disabled={!cvUrl}
-            >
-              <Trash2 className="w-4 h-4 mr-2" />
-              Delete CV
-            </Button>
-          </div>
-
           {/* Instructions */}
           <div className="bg-gray-50 p-3 rounded-lg text-xs text-gray-600 space-y-1">
-            <p className="font-semibold text-gray-700">💡 How to use:</p>
-            <p>• Press <strong>Ctrl + Shift + A</strong> to open this panel</p>
-            <p>• Upload your CV (PDF, DOC, DOCX)</p>
-            <p>• Only you can access this panel</p>
-            <p>• CV is stored locally in your browser</p>
+            <p className="font-semibold text-gray-700">💡 Instructions:</p>
+            <p>• Select PDF, DOC, or DOCX file</p>
+            <p>• Click Upload CV</p>
+            <p>• Visitors can download from the portfolio</p>
+            <p>• Press <strong>Ctrl + Shift + A</strong> to open this panel anytime</p>
           </div>
         </div>
       </DialogContent>
