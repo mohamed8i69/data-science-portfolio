@@ -1,9 +1,26 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleDownloadCV = () => {
+    const cvUrl = localStorage.getItem("portfolio_cv_url");
+    const cvName = localStorage.getItem("portfolio_cv_name");
+    
+    if (!cvUrl) {
+      alert("CV not available for download yet");
+      return;
+    }
+
+    const link = document.createElement("a");
+    link.href = cvUrl;
+    link.download = cvName || "CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   const navItems = [
     { label: "Home", href: "#home" },
@@ -36,7 +53,11 @@ export default function Navigation() {
               {item.label}
             </a>
           ))}
-          <Button className="bg-primary hover:bg-blue-800 text-white">
+          <Button 
+            onClick={handleDownloadCV}
+            className="bg-primary hover:bg-blue-800 text-white"
+          >
+            <Download className="w-4 h-4 mr-2" />
             Download CV
           </Button>
         </div>
@@ -69,7 +90,11 @@ export default function Navigation() {
                 {item.label}
               </a>
             ))}
-            <Button className="w-full bg-primary hover:bg-blue-800 text-white">
+            <Button 
+              onClick={handleDownloadCV}
+              className="w-full bg-primary hover:bg-blue-800 text-white"
+            >
+              <Download className="w-4 h-4 mr-2" />
               Download CV
             </Button>
           </div>
