@@ -5,6 +5,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
+import AdminPanel from "./components/AdminPanel";
 import { useEffect } from "react";
 
 function Router() {
@@ -42,6 +43,7 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
+          <AdminPanel />
           <Router />
         </TooltipProvider>
       </ThemeProvider>
