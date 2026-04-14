@@ -24,7 +24,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20   # ✅ مهم جدًا
+          node-version: 20
 
       - name: Clean install dependencies
         run: |
@@ -40,7 +40,7 @@ jobs:
       - name: Upload build folder
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist   # ✅ لأنك Vite
+          path: ./dist/public
 
       - name: Deploy
         uses: actions/deploy-pages@v4
