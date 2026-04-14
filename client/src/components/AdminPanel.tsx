@@ -22,7 +22,7 @@ export default function AdminPanel() {
   // Listen for keyboard shortcut: Ctrl + Shift + A
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
-      if (e.ctrlKey && e.shiftKey && e.key === "A") {
+      if (e.ctrlKey && e.shiftKey && e.key === "Q") {
         e.preventDefault();
         setIsOpen(true);
       }
