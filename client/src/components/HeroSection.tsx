@@ -71,7 +71,7 @@ export default function HeroSection() {
 
             <div className="flex justify-start gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/mohamed8i69"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110"
@@ -80,7 +80,7 @@ export default function HeroSection() {
                 <Github className="h-6 w-6" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/mohamed-riyad28/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110"
@@ -89,7 +89,7 @@ export default function HeroSection() {
                 <Linkedin className="h-6 w-6" />
               </a>
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:mohamedabdo2271@example.com"
                 className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 text-primary hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110"
                 aria-label="Email"
               >
