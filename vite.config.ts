@@ -195,7 +195,7 @@ import { defineConfig } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
 export default defineConfig({
-  base: "/data-science-portfolio/", // 🔥 غيّرها لاسم repo بتاعك
+  base: "/data-science-portfolio/",
 
   plugins: [
     react(),
@@ -212,12 +212,12 @@ export default defineConfig({
     },
   },
 
-  envDir: path.resolve(import.meta.dirname),
   root: path.resolve(import.meta.dirname, "client"),
 
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: "../dist",
     emptyOutDir: true,
+    assetsDir: "assets",
   },
 
   server: {
