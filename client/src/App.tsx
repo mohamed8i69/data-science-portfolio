@@ -5,12 +5,14 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-
+import { useEffect } from "react";
 
 function Router() {
   return (
     <Switch>
       <Route path={"/"} component={Home} />
+      <Route path={"/data-science-portfolio/"} component={Home} />
+      <Route path={"/data-science-portfolio"} component={Home} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -24,6 +26,14 @@ function Router() {
 // - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
 
 function App() {
+  useEffect(() => {
+    // Handle GitHub Pages routing - redirect to home if on wrong path
+    const path = window.location.pathname;
+    if (path.includes('data-science-portfolio') && !path.endsWith('/')) {
+      window.history.replaceState(null, '', path + '/');
+    }
+  }, []);
+
   return (
     <ErrorBoundary>
       <ThemeProvider
