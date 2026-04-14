@@ -5,16 +5,6 @@
 /* Typography: Playfair Display (Bold) + Inter (Regular/Semi-bold) + JetBrains Mono (Code) */
 /* Colors: Deep Blue (#1e40af) + Light Gray (#f8f9fa) + Warm Orange (#f97316) */
 
-@font-face {
-  font-family: 'Playfair Display';
-  src: url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800') format('woff2');
-}
-
-@font-face {
-  font-family: 'JetBrains Mono';
-  src: url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600') format('woff2');
-}
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
