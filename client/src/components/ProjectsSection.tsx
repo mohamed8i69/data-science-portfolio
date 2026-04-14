@@ -68,7 +68,7 @@ const projects: Project[] = [
 
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-20 bg-gradient-to-b from-white to-gray-50">
+    <section id="projects" className="py-20 bg-gradient-to-b from-white to-gray-50 hidden">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
